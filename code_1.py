@@ -66,3 +66,7 @@ for x in range(len(df)):
     collectionName.append("Random Collection")
 
 df.insert(1, "collectionName", collectionName, True)
+
+for x in range(len(df)):
+    if df.collectionName[x] == "Random Collection":
+        df = df.drop(x)
