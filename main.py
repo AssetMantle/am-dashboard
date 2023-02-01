@@ -172,7 +172,7 @@ for x in range(len(df3)):
 df3.insert(3, "newSales", newSales, True)
 
 df4 = df3.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply', 'totalSold': 'Sold',
-                 'newSales': 'New Sales', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
+                 'newSales': 'Sales in last 24h', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
 print(df4.to_string(index=False))
 print("\nTotal MNTL Volume = " + str(totalVolume))
