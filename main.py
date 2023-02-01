@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("data\data_2301.csv")
@@ -174,8 +175,24 @@ df3.insert(3, "newSales", newSales, True)
 df4 = df3.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply', 'totalSold': 'Sold',
                  'newSales': 'Sales in last 24h', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
+
 print(df4.to_string(index=False))
 print("\nTotal MNTL Volume = " + str(totalVolume))
 print("Total USD Volume = " + str(totalVolume/100))
 print("Total NFTs Sold = " + str(totalSales))
 print("Active Listings = " + str(totalListings))
+
+
+# figure, axis = plt.subplots(2, 2)
+
+# axis[0, 0].
+plot = df3.plot.pie(y='totalSold', figsize=(
+    10, 7.5), labels=df3.collectionName, ylabel='')
+plt.title('Sales Chart', fontsize=20)
+
+# axis[0, 1].
+plot = df3.plot.pie(y='totalVolumeTraded', figsize=(
+    10, 7.5), labels=df3.collectionName, ylabel='')
+plt.title('Volume Chart', fontsize=20)
+
+matplotlib.pyplot.show()
