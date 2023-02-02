@@ -176,11 +176,11 @@ df4 = df3.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply',
                  'newSales': 'Sales in last 24h', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
 
-print(df4.to_string(index=False))
+print("\n"+df4.to_string(index=False))
 print("\nTotal MNTL Volume = " + str(totalVolume))
 print("Total USD Volume = " + str(totalVolume/100))
 print("Total NFTs Sold = " + str(totalSales))
-print("Active Listings = " + str(totalListings))
+print("Active Listings = " + str(totalListings)+"\n")
 
 
 # figure, axis = plt.subplots(2, 2)
