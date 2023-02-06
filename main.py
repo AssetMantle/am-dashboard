@@ -153,12 +153,19 @@ df3 = df3.drop(['id', 'totalMinted', 'totalTraded', 'floorPrice', 'salePrice', '
                'uniqueOwners', 'createdBy', 'createdOnMillisEpoch', 'updatedBy', 'updatedOnMillisEpoch'], axis=1)
 
 totalVolume = 0
+totalVolume2 = 0
 totalSales = 0
+totalSales2 = 0
 totalListings = 0
 
 totalVolume = df3.totalVolumeTraded.sum()
+totalVolume2 = df.totalVolumeTraded.sum()
 totalSales = df3.totalSold.sum()
+totalSales2 = df.totalSold.sum()
 totalListings = df3.listed.sum()
+
+totalUSDVolume = totalVolume/94.15
+format_USD = "{:.2f}".format(totalUSDVolume)
 
 df.reset_index(inplace=True, drop=True)
 df3.reset_index(inplace=True, drop=True)
@@ -173,13 +180,15 @@ for x in range(len(df3)):
 df3.insert(3, "newSales", newSales, True)
 
 df4 = df3.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply', 'totalSold': 'Sold',
-                 'newSales': 'Sales in last 24h', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
+                 'newSales': 'Sales (24h)', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
 
 print("\n"+df4.to_string(index=False))
 print("\nTotal MNTL Volume = " + str(totalVolume))
-print("Total USD Volume = " + str(totalVolume/100))
+print("Total USD Volume = " + str(format_USD))
+print("\nMNTL Volume (24h) = " + str(totalVolume - totalVolume2))
 print("Total NFTs Sold = " + str(totalSales))
+print("NFTs sold (24h) = " + str(totalSales - totalSales2))
 print("Active Listings = " + str(totalListings)+"\n")
 
 
