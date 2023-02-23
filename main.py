@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("data\data_2301.csv")
+df = pd.read_csv("data\data_1602.csv")
 
 collectionName = []
 
@@ -79,7 +79,7 @@ df = df.drop(['id', 'totalMinted', 'totalTraded', 'floorPrice', 'salePrice', 'be
 df2 = df.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply', 'totalSold': 'Sold',
                 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
-df3 = pd.read_csv("data/data_3001.csv")
+df3 = pd.read_csv("data/data_2302.csv")
 
 collectionName = []
 
@@ -180,15 +180,15 @@ for x in range(len(df3)):
 df3.insert(3, "newSales", newSales, True)
 
 df4 = df3.rename(columns={'collectionName': 'Collection', 'totalNFTs': 'Supply', 'totalSold': 'Sold',
-                 'newSales': 'Sales (24h)', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
+                 'newSales': 'Sales (1 Week)', 'totalVolumeTraded': 'Volume', 'listed': 'Listings', 'publicListingPrice': 'Price'})
 
 
 print("\n"+df4.to_string(index=False))
 print("\nTotal MNTL Volume = " + str(totalVolume))
 print("Total USD Volume = " + str(format_USD))
-print("\nMNTL Volume (24h) = " + str(totalVolume - totalVolume2))
+print("\nMNTL Volume (1 Week) = " + str(totalVolume - totalVolume2))
 print("Total NFTs Sold = " + str(totalSales))
-print("NFTs sold (24h) = " + str(totalSales - totalSales2))
+print("NFTs sold (1 Week) = " + str(totalSales - totalSales2))
 print("Active Listings = " + str(totalListings)+"\n")
 
 
